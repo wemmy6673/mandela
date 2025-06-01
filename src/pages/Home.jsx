@@ -1,5 +1,5 @@
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Card1Image from "../assets/froot.png";
 import Card2Image from "../assets/pikachu.png";
 import Card3Image from "../assets/darth.png";
@@ -7,6 +7,8 @@ import Card4Image from "../assets/monopoly.png";
 import MandelaImage from "../assets/mandela-bg.png";
 
 function Home() {
+	const [isModalOpen, setIsModalOpen] = useState(false);
+
 	// Memory card data with exact content from the image
 	const memoryCards = [
 		{
@@ -34,8 +36,8 @@ function Home() {
 			title: "WHAT WAS REAL",
 			borderColor: "border-purple-400",
 			textColor: "text-purple-400",
-			topText: "LUKE, I AM TM FATHER",
-			bottomText: "NO, I AM TM FATHER",
+			topText: "LUKE, I AM YOUR FATHER",
+			bottomText: "NO, I AM YOUR FATHER",
 			topTextColor: "text-cyan-400",
 			bottomTextColor: "text-blue-400",
 		},
@@ -77,6 +79,50 @@ function Home() {
 			y: 0,
 			scale: 1,
 			transition: { duration: 0.4, ease: "easeOut" },
+		},
+	};
+
+	const modalVariants = {
+		hidden: {
+			opacity: 0,
+			scale: 0.9,
+			y: 20,
+		},
+		visible: {
+			opacity: 1,
+			scale: 1,
+			y: 0,
+			transition: {
+				duration: 0.3,
+				ease: "easeOut",
+			},
+		},
+		exit: {
+			opacity: 0,
+			scale: 0.95,
+			y: 10,
+			transition: {
+				duration: 0.2,
+				ease: "easeIn",
+			},
+		},
+	};
+
+	const backdropVariants = {
+		hidden: { opacity: 0 },
+		visible: {
+			opacity: 1,
+			transition: {
+				duration: 0.3,
+				ease: "easeOut",
+			},
+		},
+		exit: {
+			opacity: 0,
+			transition: {
+				duration: 0.2,
+				ease: "easeIn",
+			},
 		},
 	};
 
@@ -155,6 +201,7 @@ function Home() {
 									whileHover={{ scale: 1.05, boxShadow: "0 0 20px rgba(168, 85, 247, 0.3)" }}
 									whileTap={{ scale: 0.95 }}
 									transition={{ duration: 0.15 }}
+									onClick={() => setIsModalOpen(true)}
 									className="px-6 sm:px-8 py-3 border-2 border-purple-400 text-purple-400 hover:bg-purple-400/10 transition-colors duration-300 font-medium tracking-widest text-sm sm:text-base md:text-lg w-full sm:w-auto text-center"
 								>
 									<span className="sm:hidden">WHAT IS THE MANDELA EFFECT?</span>
@@ -389,6 +436,77 @@ function Home() {
 					<div className="h-8 sm:h-12 lg:h-16"></div>
 				</div>
 			</div>
+
+			{/* Modal */}
+			<AnimatePresence>
+				{isModalOpen && (
+					<>
+						{/* Backdrop */}
+						<motion.div
+							variants={backdropVariants}
+							initial="hidden"
+							animate="visible"
+							exit="exit"
+							onClick={() => setIsModalOpen(false)}
+							className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center"
+						>
+							{/* Modal Content */}
+							<motion.div
+								variants={modalVariants}
+								initial="hidden"
+								animate="visible"
+								exit="exit"
+								onClick={(e) => e.stopPropagation()}
+								className="relative max-w-lg w-[90%] bg-black/90 border-2 border-purple-400 p-8 sm:p-10"
+							>
+								{/* Close Button */}
+								<motion.button
+									whileHover={{ scale: 1.1 }}
+									whileTap={{ scale: 0.95 }}
+									transition={{ duration: 0.15 }}
+									onClick={() => setIsModalOpen(false)}
+									className="absolute -top-4 -right-4 w-8 h-8 bg-black border-2 border-purple-400 text-purple-400 rounded-full flex items-center justify-center hover:bg-purple-400/10 transition-colors z-10"
+								>
+									×
+								</motion.button>
+
+								{/* Content */}
+								<motion.div
+									initial={{ opacity: 0, y: 20 }}
+									animate={{ opacity: 1, y: 0 }}
+									transition={{ delay: 0.1, duration: 0.4 }}
+									className="space-y-6"
+								>
+									<motion.p
+										initial={{ opacity: 0 }}
+										animate={{ opacity: 1 }}
+										transition={{ delay: 0.2, duration: 0.4 }}
+										className="text-xl sm:text-2xl text-cyan-400 tracking-wider leading-relaxed"
+									>
+										The Mandela Effect — when you remember something that never happened.
+									</motion.p>
+									<motion.p
+										initial={{ opacity: 0 }}
+										animate={{ opacity: 1 }}
+										transition={{ delay: 0.3, duration: 0.4 }}
+										className="text-lg sm:text-xl text-purple-400 tracking-wider leading-relaxed"
+									>
+										Glitches in reality, timeline shifts, or mass illusion?
+									</motion.p>
+									<motion.p
+										initial={{ opacity: 0 }}
+										animate={{ opacity: 1 }}
+										transition={{ delay: 0.4, duration: 0.4 }}
+										className="text-lg sm:text-xl text-blue-400 tracking-wider leading-relaxed"
+									>
+										Are you sure the world was always this way?
+									</motion.p>
+								</motion.div>
+							</motion.div>
+						</motion.div>
+					</>
+				)}
+			</AnimatePresence>
 		</>
 	);
 }
