@@ -18,6 +18,7 @@ function Home() {
 			textColor: "text-cyan-400",
 			topImage: Card1Image,
 			bottomImage: Card1Image2,
+			shrink: true,
 		},
 		{
 			title: "WHAT YOU REMEMBER",
@@ -416,7 +417,7 @@ function Home() {
 												transition={{ duration: 0.2 }}
 												src={card.bottomImage}
 												alt="Memory item"
-												className="max-w-full max-h-full object-contain"
+												className={`max-w-full max-h-full object-contain ${card.shrink ? " w-[70%] " : ""}`}
 											/>
 										) : (
 											<motion.p
