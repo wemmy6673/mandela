@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Card1Image from "../assets/froot.png";
-import Card1Image2 from "../assets/fruits.jpg";
+import Card1Image2 from "../assets/fruits.png";
 import Card2Image from "../assets/pikachu.png";
 import Card3Image from "../assets/darth.png";
 import Card4Image from "../assets/monopoly.png";
