@@ -417,7 +417,9 @@ function Home() {
 												transition={{ duration: 0.2 }}
 												src={card.bottomImage}
 												alt="Memory item"
-												className={`max-w-full max-h-full object-contain ${card.shrink ? " w-[70%] " : ""}`}
+												className={`max-w-full max-h-full object-contain ${
+													card.shrink ? " w-[32%] sm:w-[30%] md:w-[45%] lg:w-[65%] " : ""
+												}`}
 											/>
 										) : (
 											<motion.p
