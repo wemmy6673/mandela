@@ -42,8 +42,8 @@ const MemoryCards = () => {
 			bottomText: "NO, I AM YOUR FATHER",
 			topTextColor: "text-cyan-400",
 			bottomTextColor: "text-blue-400",
-			topImage: Fighter2Image,
-			bottomImage: FighterImage,
+			topImage: FighterImage,
+			bottomImage: Fighter2Image,
 		},
 	];
 

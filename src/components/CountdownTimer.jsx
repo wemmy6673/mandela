@@ -2,12 +2,7 @@ import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
 const CountdownTimer = ({ targetDate }) => {
-	const [timeLeft, setTimeLeft] = useState({
-		days: 0,
-		hours: 0,
-		minutes: 0,
-		seconds: 0,
-	});
+	const [progress, setProgress] = useState(0);
 
 	useEffect(() => {
 		const timer = setInterval(() => {
@@ -16,15 +11,18 @@ const CountdownTimer = ({ targetDate }) => {
 
 			if (distance < 0) {
 				clearInterval(timer);
+				setProgress(100);
 				return;
 			}
 
-			setTimeLeft({
-				days: Math.floor(distance / (1000 * 60 * 60 * 24)),
-				hours: Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
-				minutes: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
-				seconds: Math.floor((distance % (1000 * 60)) / 1000),
-			});
+			// Calculate days remaining
+			const daysRemaining = distance / (1000 * 60 * 60 * 24);
+			// Assuming 100 days total duration
+			const totalDays = 100;
+			// Calculate progress percentage
+			const newProgress = Math.max(0, Math.min(100, ((totalDays - daysRemaining) / totalDays) * 100));
+
+			setProgress(newProgress);
 		}, 1000);
 
 		return () => clearInterval(timer);
@@ -51,104 +49,64 @@ const CountdownTimer = ({ targetDate }) => {
 
 			{/* Main timer container */}
 			<div className="relative p-6 sm:p-8">
-				<div className="flex justify-between items-center gap-4 sm:gap-6">
-					{Object.entries(timeLeft).map(([unit, value], index) => (
-						<div key={unit} className="relative group">
-							{/* Vertical line separators */}
-							{index < 3 && (
-								<div className="absolute -right-2 sm:-right-3 top-1/2 -translate-y-1/2 w-px h-12 sm:h-16">
-									<motion.div
-										className="w-full h-full bg-gradient-to-b from-transparent via-cyan-400/30 to-transparent"
-										animate={{
-											scaleY: [0.3, 1, 0.3],
-											opacity: [0.3, 0.7, 0.3],
-										}}
-										transition={{
-											duration: 2,
-											repeat: Infinity,
-											ease: "linear",
-										}}
-									/>
-								</div>
-							)}
+				<div className="flex flex-col items-center gap-4">
+					{/* FRIDAY text */}
+					<motion.div
+						className="text-4xl sm:text-5xl md:text-6xl font-['Bebas_Neue'] text-cyan-400 tracking-wider"
+						animate={{
+							textShadow: [
+								"0 0 8px rgba(34, 211, 238, 0.3)",
+								"0 0 16px rgba(34, 211, 238, 0.6)",
+								"0 0 8px rgba(34, 211, 238, 0.3)",
+							],
+						}}
+						transition={{
+							duration: 2,
+							repeat: Infinity,
+							ease: "easeInOut",
+						}}
+					>
+						FRIDAY
+					</motion.div>
 
-							{/* Number Container */}
-							<div className="relative">
-								{/* Glowing background effect */}
-								<motion.div
-									className="absolute inset-0 bg-cyan-400/5 rounded-lg -z-10"
-									animate={{
-										boxShadow: [
-											"0 0 20px rgba(34, 211, 238, 0.1)",
-											"0 0 40px rgba(34, 211, 238, 0.2)",
-											"0 0 20px rgba(34, 211, 238, 0.1)",
-										],
-									}}
-									transition={{
-										duration: 2,
-										repeat: Infinity,
-										ease: "easeInOut",
-									}}
-								/>
+					{/* Progress bar */}
+					<div className="w-full max-w-md relative h-4 bg-black/50 rounded-full overflow-hidden border border-cyan-400/30">
+						{/* Main progress fill */}
+						<motion.div
+							className="absolute left-0 top-0 h-full bg-gradient-to-r from-cyan-400/80 to-purple-400/80"
+							initial={{ width: 0 }}
+							animate={{ width: `${progress}%` }}
+							transition={{ duration: 0.5, ease: "easeOut" }}
+						/>
 
-								{/* Number Display */}
-								<motion.div
-									className="relative px-3 py-2 sm:px-4 sm:py-3"
-									whileHover={{ scale: 1.05 }}
-									transition={{ duration: 0.2 }}
-								>
-									{/* Top label */}
-									<motion.div
-										className="absolute -top-2 left-1/2 -translate-x-1/2 text-[10px] text-cyan-400/70 uppercase tracking-[0.2em] whitespace-nowrap"
-										animate={{
-											opacity: [0.5, 1, 0.5],
-										}}
-										transition={{
-											duration: 2,
-											repeat: Infinity,
-										}}
-									>
-										{unit}
-									</motion.div>
+						{/* Animated highlight effect */}
+						<motion.div
+							className="absolute top-0 h-full w-1/2 bg-gradient-to-r from-transparent via-cyan-200/30 to-transparent"
+							animate={{
+								left: ["-50%", "150%"],
+							}}
+							transition={{
+								duration: 2,
+								repeat: Infinity,
+								ease: "linear",
+							}}
+						/>
 
-									{/* Number */}
-									<div className="relative">
-										<motion.div
-											className="font-['Bebas_Neue'] text-2xl sm:text-3xl md:text-4xl text-cyan-400"
-											animate={{
-												textShadow: [
-													"0 0 8px rgba(34, 211, 238, 0.3)",
-													"0 0 16px rgba(34, 211, 238, 0.6)",
-													"0 0 8px rgba(34, 211, 238, 0.3)",
-												],
-											}}
-											transition={{
-												duration: 2,
-												repeat: Infinity,
-												ease: "easeInOut",
-											}}
-										>
-											{String(value).padStart(2, "0")}
-										</motion.div>
-
-										{/* Animated underline */}
-										<motion.div
-											className="absolute -bottom-1 left-0 w-full h-px bg-gradient-to-r from-transparent via-purple-400/50 to-transparent"
-											animate={{
-												scaleX: [0, 1, 0],
-												opacity: [0, 1, 0],
-											}}
-											transition={{
-												duration: 2,
-												repeat: Infinity,
-												ease: "easeInOut",
-											}}
-										/>
-									</div>
-								</motion.div>
-							</div>
-						</div>
-					))}
+						{/* Progress percentage */}
+						<motion.div
+							className="absolute inset-0 flex items-center justify-center text-xs font-mono text-cyan-400/90"
+							animate={{
+								opacity: [0.7, 1, 0.7],
+							}}
+							transition={{
+								duration: 2,
+								repeat: Infinity,
+								ease: "easeInOut",
+							}}
+						>
+							{Math.round(progress)}%
+						</motion.div>
+					</div>
 				</div>
 
 				{/* Decorative corner elements */}

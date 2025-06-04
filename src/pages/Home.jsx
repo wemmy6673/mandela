@@ -8,7 +8,7 @@ function Home() {
 	const [isModalOpen, setIsModalOpen] = useState(false);
 
 	// Set target date for countdown (YYYY, MM-1, DD, HH, MM, SS)
-	const targetDate = new Date(2025, 5, 6, 8, 0, 0);
+	const targetDate = new Date(2025, 5, 27, 12, 0, 0);
 
 	return (
 		<div className="min-h-screen bg-black text-white relative overflow-hidden font-['Bebas_Neue']">
