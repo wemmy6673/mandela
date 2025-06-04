@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import FrootImage from "../assets/froot.png";
-import FruitsImage from "../assets/fruits.jpg";
+import FruitsImage from "../assets/fruits.png";
 import PikachuImage from "../assets/pikachu.png";
 import Pikachu2Image from "../assets/pikachu2.png";
 import DarthVaderImage from "../assets/darth.png";
