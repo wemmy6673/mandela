@@ -221,7 +221,7 @@ const SocialInfo = () => {
 							className="text-gray-300 hover:text-purple-400 transition-colors duration-300 font-mono sm:text-base md:text-lg tracking-wider hover:bg-purple-400/5 px-2 py-1 rounded text-left w-fit max-w-full truncate"
 							title="Click to copy"
 						>
-							COMING SOON
+							CBdmrYv6Wos1Vhq1uoozQQ4uTSyDe7ZvJQeRFGPCpump
 						</motion.button>
 					</div>
 				</div>
