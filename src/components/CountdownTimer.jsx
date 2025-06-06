@@ -115,7 +115,7 @@ const CountdownTimer = () => {
 								ease: "easeInOut",
 							}}
 						>
-							CONTRACT ACTIVE
+							CONTRACT LIVE
 						</motion.span>
 					</div>
 				</div>
