@@ -26,7 +26,7 @@ const CountdownTimer = () => {
 				<div className="flex flex-col items-center gap-4">
 					{/* Contract Address text */}
 					<motion.div
-						className="text-xl sm:text-2xl md:text-3xl font-['Bebas_Neue'] text-cyan-400 tracking-wider text-center"
+						className="text-xl sm:text-2xl md:text-3xl font-['Bebas_Neue'] text-cyan-400 tracking-wider text-center max-w-full"
 						animate={{
 							scale: [1, 1.05, 1],
 							textShadow: [
@@ -41,8 +41,13 @@ const CountdownTimer = () => {
 							ease: "easeInOut",
 						}}
 					>
-						<div className="flex items-center gap-2 sm:gap-3">
-							<span className="font-mono">CBdmrYv6Wos1Vhq1uoozQQ4uTSyDe7ZvJQeRFGPCpump</span>
+						<div className="flex items-center gap-2 sm:gap-3 max-w-full">
+							<span
+								className="font-mono truncate max-w-[200px] sm:max-w-[300px] md:max-w-[400px]"
+								title="CBdmrYv6Wos1Vhq1uoozQQ4uTSyDe7ZvJQeRFGPCpump"
+							>
+								CBdmrYv6Wos1Vhq1uoozQQ4uTSyDe7ZvJQeRFGPCpump
+							</span>
 							<motion.button
 								whileHover={{ scale: 1.1 }}
 								whileTap={{ scale: 0.9 }}
@@ -50,7 +55,7 @@ const CountdownTimer = () => {
 									navigator.clipboard.writeText("CBdmrYv6Wos1Vhq1uoozQQ4uTSyDe7ZvJQeRFGPCpump");
 									alert("Contract address copied to clipboard!");
 								}}
-								className="hover:text-purple-400 transition-colors"
+								className="hover:text-purple-400 transition-colors flex-shrink-0"
 								title="Click to copy"
 							>
 								<svg
