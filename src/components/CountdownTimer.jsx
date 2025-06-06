@@ -24,9 +24,9 @@ const CountdownTimer = () => {
 			{/* Main container */}
 			<div className="relative p-6 sm:p-8">
 				<div className="flex flex-col items-center gap-4">
-					{/* LIVE NOW! text */}
+					{/* Contract Address text */}
 					<motion.div
-						className="text-4xl sm:text-5xl md:text-6xl font-['Bebas_Neue'] text-cyan-400 tracking-wider"
+						className="text-xl sm:text-2xl md:text-3xl font-['Bebas_Neue'] text-cyan-400 tracking-wider text-center"
 						animate={{
 							scale: [1, 1.05, 1],
 							textShadow: [
@@ -41,7 +41,34 @@ const CountdownTimer = () => {
 							ease: "easeInOut",
 						}}
 					>
-						LIVE NOW!
+						<div className="flex items-center gap-2 sm:gap-3">
+							<span className="font-mono">CBdmrYv6Wos1Vhq1uoozQQ4uTSyDe7ZvJQeRFGPCpump</span>
+							<motion.button
+								whileHover={{ scale: 1.1 }}
+								whileTap={{ scale: 0.9 }}
+								onClick={() => {
+									navigator.clipboard.writeText("CBdmrYv6Wos1Vhq1uoozQQ4uTSyDe7ZvJQeRFGPCpump");
+									alert("Contract address copied to clipboard!");
+								}}
+								className="hover:text-purple-400 transition-colors"
+								title="Click to copy"
+							>
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									className="w-5 h-5"
+									fill="none"
+									viewBox="0 0 24 24"
+									stroke="currentColor"
+								>
+									<path
+										strokeLinecap="round"
+										strokeLinejoin="round"
+										strokeWidth={2}
+										d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"
+									/>
+								</svg>
+							</motion.button>
+						</div>
 					</motion.div>
 
 					{/* Animated line */}
@@ -83,7 +110,7 @@ const CountdownTimer = () => {
 								ease: "easeInOut",
 							}}
 						>
-							SYSTEM ACTIVE
+							CONTRACT ACTIVE
 						</motion.span>
 					</div>
 				</div>
