@@ -217,7 +217,7 @@ const SocialInfo = () => {
 						<motion.button
 							whileHover={{ scale: 1.05 }}
 							whileTap={{ scale: 0.95 }}
-							onClick={() => navigator.clipboard.writeText("COMING SOON")}
+							onClick={() => navigator.clipboard.writeText("CBdmrYv6Wos1Vhq1uoozQQ4uTSyDe7ZvJQeRFGPCpump")}
 							className="text-gray-300 hover:text-purple-400 transition-colors duration-300 font-mono sm:text-base md:text-lg tracking-wider hover:bg-purple-400/5 px-2 py-1 rounded text-left w-fit max-w-full truncate"
 							title="Click to copy"
 						>
