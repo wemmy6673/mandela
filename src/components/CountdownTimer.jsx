@@ -46,13 +46,13 @@ const CountdownTimer = () => {
 								className="font-mono truncate max-w-[200px] sm:max-w-[300px] md:max-w-[400px]"
 								title="CBdmrYv6Wos1Vhq1uoozQQ4uTSyDe7ZvJQeRFGPCpump"
 							>
-								CBdmrYv6Wos1Vhq1uoozQQ4uTSyDe7ZvJQeRFGPCpump
+								Coming soon
 							</span>
 							<motion.button
 								whileHover={{ scale: 1.1 }}
 								whileTap={{ scale: 0.9 }}
 								onClick={() => {
-									navigator.clipboard.writeText("CBdmrYv6Wos1Vhq1uoozQQ4uTSyDe7ZvJQeRFGPCpump");
+									navigator.clipboard.writeText("Coming soon");
 									alert("Contract address copied to clipboard!");
 								}}
 								className="hover:text-purple-400 transition-colors flex-shrink-0"
@@ -115,7 +115,7 @@ const CountdownTimer = () => {
 								ease: "easeInOut",
 							}}
 						>
-							CONTRACT LIVE
+							COMING SOON
 						</motion.span>
 					</div>
 				</div>
