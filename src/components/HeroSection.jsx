@@ -73,9 +73,9 @@ const HeroSection = ({ targetDate, onOpenModal }) => {
 				</motion.p>
 
 				{/* Countdown Timer */}
-				<motion.div variants={fadeInUp} className="mb-8 sm:mb-10 lg:mb-12">
+				{/* <motion.div variants={fadeInUp} className="mb-8 sm:mb-10 lg:mb-12">
 					<CountdownTimer targetDate={targetDate} />
-				</motion.div>
+				</motion.div> */}
 
 				<motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-4 sm:gap-6">
 					<motion.button
