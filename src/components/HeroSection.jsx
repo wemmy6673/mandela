@@ -219,13 +219,13 @@ const SocialInfo = () => {
 								whileHover={{ scale: 1.05 }}
 								whileTap={{ scale: 0.95 }}
 								onClick={() => {
-									navigator.clipboard.writeText("CBdmrYv6Wos1Vhq1uoozQQ4uTSyDe7ZvJQeRFGPCpump");
+									navigator.clipboard.writeText("Coming soon");
 									alert("Contract address copied to clipboard!");
 								}}
 								className="text-gray-300 hover:text-purple-400 transition-colors duration-300 font-mono sm:text-base md:text-lg tracking-wider hover:bg-purple-400/5 px-2 py-1 rounded text-left w-fit max-w-full truncate group flex items-center gap-2"
 								title="Click to copy"
 							>
-								<span>CBdmrYv6Wos1Vhq1uoozQQ4uTSyDe7ZvJQeRFGPCpump</span>
+								<span>Coming soon</span>
 								<svg
 									xmlns="http://www.w3.org/2000/svg"
 									className="w-4 h-4 opacity-50 group-hover:opacity-100 transition-opacity"
